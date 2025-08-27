@@ -30,7 +30,7 @@ app.use("/api/admin", adminRoute);
 
 app.use(errorMiddleware);
 
-const PORT = 5001;
+const PORT = process.env.PORT;
 connectDb().then(() => {
   app.listen(PORT, () => {
     console.log(`server is running at port: ${PORT}`);

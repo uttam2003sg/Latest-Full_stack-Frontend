@@ -11,42 +11,54 @@ export const AdminLayout = () => {
     return <h1>Loading ...</h1>;
   }
 
-  if (!user.isAdmin) {
+  if (!user || !user.isAdmin) {
     return <Navigate to="/" />;
   }
 
   return (
     <>
-      <header>
-        <div className="container">
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/admin/users">
-                  <FaUser /> users
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/admin/contacts">
-                  <FaMessage /> Contact
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/service">
-                  <FaRegListAlt /> Services
-                </NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/">
-                  <FaHome /> Home
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
-        </div>
+      <header style={{ background: "#333", color: "#fff", padding: "10px 20px" }}>
+        <nav>
+          <ul style={{ display: "flex", gap: "15px", listStyle: "none", margin: 0, padding: 0 }}>
+            <li>
+              <NavLink
+                to="/admin/users"
+                style={({ isActive }) => ({ color: isActive ? "#4CAF50" : "#fff" })}
+              >
+                <FaUser /> Users
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/admin/contacts"
+                style={({ isActive }) => ({ color: isActive ? "#4CAF50" : "#fff" })}
+              >
+                <FaMessage /> Contacts
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/admin/services"
+                style={({ isActive }) => ({ color: isActive ? "#4CAF50" : "#fff" })}
+              >
+                <FaRegListAlt /> Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/"
+                style={({ isActive }) => ({ color: isActive ? "#4CAF50" : "#fff" })}
+              >
+                <FaHome /> Home
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       </header>
-      <Outlet />
+
+      <main style={{ padding: "20px" }}>
+        <Outlet />
+      </main>
     </>
   );
 };

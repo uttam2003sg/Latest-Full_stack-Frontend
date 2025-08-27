@@ -1,7 +1,9 @@
 const express = require("express");
-const services = require("../controllers/service-controller");
+const { getAllServices } = require("../controllers/admin-controller"); // only fetch logic
+
 const router = express.Router();
 
-router.route("/service").get(services);
+// Public route to fetch all services
+router.get("/service", getAllServices);
 
 module.exports = router;

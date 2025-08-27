@@ -5,8 +5,9 @@ const serviceSchema = new Schema({
   description: { type: String, required: true },
   price: { type: String, required: true },
   provider: { type: String, required: true },
+  image: { type: String }, // Optional image URL
 });
 
-const Service = new model("Service", serviceSchema);
+const Service = model("Service", serviceSchema);
 
 module.exports = Service;

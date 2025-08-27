@@ -9,10 +9,14 @@ import { Navbar } from "./components/Navbar";
 import { Error } from "./pages/Error";
 import { Footer } from "./components/Footer/Footer";
 import { Logout } from "./pages/Logout";
+
+// Admin Pages
 import { AdminLayout } from "./components/layouts/Admin-Layout";
 import { AdminUsers } from "./pages/Admin-Users";
 import { AdminContacts } from "./pages/Admin-Contacts";
 import { AdminUpdate } from "./pages/Admin-Update";
+import { AdminServices } from "./pages/AdminServices"; // New page
+import { AdminServiceUpdate } from "./pages/AdminServiceUpdate"; // Optional update page
 
 const App = () => {
   return (
@@ -20,6 +24,7 @@ const App = () => {
       <BrowserRouter>
         <Navbar />
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
@@ -28,10 +33,14 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="*" element={<Error />} />
+
+          {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="users" element={<AdminUsers />} />
             <Route path="contacts" element={<AdminContacts />} />
             <Route path="users/:id/edit" element={<AdminUpdate />} />
+            <Route path="services" element={<AdminServices />} />             {/* List / Create Services */}
+            <Route path="services/:id/edit" element={<AdminServiceUpdate />} /> {/* Edit Service */}
           </Route>
         </Routes>
         <Footer />
